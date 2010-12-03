@@ -1,0 +1,17 @@
+
+# グラム : センサ値
+weights :
+    '0' : 746.5 # 初期値
+    '10' : 740.15 # 分銅
+    '20' : 734.9 # 分銅
+    '30' : 729.355 # 分銅
+
+gyazo : 'http://gyazo.com/shokai/'
+
+objects :
+    'ペンチ' : 75
+    'ニッパー' : 80
+
+serial_socket_gateway : 
+    host : 'localhost'
+    port : 8782
