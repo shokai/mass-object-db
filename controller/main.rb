@@ -79,8 +79,7 @@ EventMachine::run do
           puts 'detect => !empty!'.color(200,0,0)
         else
           begin
-            #url = "http://localhost:8092/g/#{g}"
-            url = "#{conf['gyazo']}#{g}"
+            url = "#{conf['api']}#{g}"
             puts url.color(:blue)
             puts `open #{url}`
           rescue => e
