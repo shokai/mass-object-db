@@ -1,16 +1,12 @@
 
 # グラム : センサ値
 weights :
-    '0' : 746.5 # 初期値
-    '10' : 740.15 # 分銅
-    '20' : 734.9 # 分銅
-    '30' : 729.355 # 分銅
+    '0' : 756.35 # 何も載っていない
+    '10' : 751.1 # 分銅
+    '20' : 745.8 # 分銅
+    '30' : 740.5 # 分銅
 
-gyazo : 'http://gyazo.com/shokai/'
-
-objects :
-    'ペンチ' : 75
-    'ニッパー' : 80
+api : 'http://localhost:8093/'
 
 serial_socket_gateway : 
     host : 'localhost'

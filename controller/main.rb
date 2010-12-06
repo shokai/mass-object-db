@@ -37,8 +37,8 @@ end
 weight = 0 # sensor
 median = 0
 g = 0 # weight (g)
+last_weight = 0
 weight_tmps = Array.new
-last_obj = nil
 
 EventMachine::run do
   EventMachine::defer do
@@ -55,7 +55,11 @@ EventMachine::run do
           d *= -1 if d < 0
           d
         }.inject{|a,b|a+b}/weight_tmps.size
-        puts "sensor : #{weight}"
+        if median < 1.5
+          puts "sensor : #{weight}".color(:green)
+        else
+          puts "sensor : #{weight}".color(:red)
+        end
         puts "median : #{median}"
         weight_tmps.clear
       end
@@ -66,25 +70,23 @@ EventMachine::run do
     loop do
       break if calibrate
       g = (zv-weight)/g1
+      g = g.to_i
+
       puts "weight : #{g} (g)".color(:green)
-      if median < 1.5 # センサ値平均がガタついてない時
-        conf['objects'].each{|k,v|
-          if v-5 < g and g < v+5 # 面倒なのでマッチのレンジを超広くした
-            if last_obj != k # 同じ物を処理しない
-              puts "detect => #{k.split(/\./).first}".color(0,0,200)
-              puts "open #{k}"
-              begin
-                puts `open #{conf['gyazo']}#{k}`
-              rescue => e
-                STDERR.puts e.color(:red)
-              end
-            end
-            last_obj = k
-          end
-        }
+      if median < 1.5 and (g < last_weight-5 or last_weight+5 < g) # センサ値平均がガタついてない時
         if -5 < g and g < 5 # 何も無い
-          last_upload = nil
+          last_weight = 0
           puts 'detect => !empty!'.color(200,0,0)
+        else
+          begin
+            #url = "http://localhost:8092/g/#{g}"
+            url = "#{conf['gyazo']}#{g}"
+            puts url.color(:blue)
+            puts `open #{url}`
+          rescue => e
+            STDERR.puts e.color(:red)
+          end
+          last_weight = g
         end
       end
       sleep 1
