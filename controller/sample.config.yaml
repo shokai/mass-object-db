@@ -6,11 +6,11 @@ weights :
     '20' : 745.8 # 分銅
     '30' : 740.5 # 分銅
 
-api : 'http://localhost:8093/'
+api : 'http://localhost:8400'
 
 browser : 'open'
-# browser : 'google-chrome'
-# browser : 'firefox'
+#browser : 'google-chrome'
+#browser : 'firefox'
 
 serial_socket_gateway : 
     host : 'localhost'

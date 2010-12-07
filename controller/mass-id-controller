@@ -79,7 +79,7 @@ EventMachine::run do
           puts 'detect => !empty!'.color(200,0,0)
         else
           begin
-            url = "#{conf['api']}#{g}"
+            url = "#{conf['api']}/g/#{g}"
             puts url.color(:blue)
             puts `#{conf['browser']} #{url}`
           rescue => e
