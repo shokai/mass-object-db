@@ -8,6 +8,10 @@ weights :
 
 api : 'http://localhost:8093/'
 
+browser : 'open'
+# browser : 'google-chrome'
+# browser : 'firefox'
+
 serial_socket_gateway : 
     host : 'localhost'
     port : 8782

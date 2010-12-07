@@ -81,7 +81,7 @@ EventMachine::run do
           begin
             url = "#{conf['api']}#{g}"
             puts url.color(:blue)
-            puts `open #{url}`
+            puts `#{conf['browser']} #{url}`
           rescue => e
             STDERR.puts e.color(:red)
           end
