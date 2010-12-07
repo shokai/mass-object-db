@@ -15,4 +15,5 @@ void loop(){
   Serial.println(ad);
   led_stat = !led_stat;
   digitalWrite(led_pin, led_stat);
+  delay(20);
 }
