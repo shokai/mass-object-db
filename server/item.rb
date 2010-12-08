@@ -1,5 +1,5 @@
 class Item
   include Mongoid::Document
   field :name
-  field :mass
+  field :mass, :type => Integer
 end
