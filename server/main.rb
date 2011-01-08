@@ -1,15 +1,5 @@
 #!/usr/bin/env ruby
 # -*- coding: utf-8 -*-
-require 'yaml'
-
-begin
-  @@conf = YAML::load open(File.dirname(__FILE__)+'/config.yaml').read
-  p @@conf
-  @@range = @@conf['mass_range'].to_i
-rescue => e
-  STDERR.puts 'config.yaml load error!'
-  STDERR.puts e
-end
 
 before do
   Mongoid.configure{|conf|
@@ -30,8 +20,7 @@ get '/g/*' do
   param = params[:splat].first
   status 404 unless param =~ /^\d+$/
   @g = param.to_i
-  #erb :weight
-  @g.to_s
+  erb :g
 end
 
 post '/api/item.json' do
@@ -54,7 +43,7 @@ get '/api/items.json' do
   range = params['range'].to_i if params['range'] and params['range'] =~ /^\d+$/
   mass = params['mass'].to_i if params['mass'] and params['mass'] =~ /^\d+$/
   name = params['name'] if params['name']
-
+  
   objs = nil
   if !mass and !name
     objs = Item.find(:all)
