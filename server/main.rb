@@ -24,6 +24,7 @@ get '/g/*' do
 end
 
 post '/api/item.json' do
+  content_type 'application/json'
   name = params['name']
   mass = params['mass'].to_i
   if !name or !mass
@@ -39,6 +40,7 @@ post '/api/item.json' do
 end
 
 get '/api/items.json' do
+  content_type 'application/json'
   range = @@range
   range = params['range'].to_i if params['range'] and params['range'] =~ /^\d+$/
   mass = params['mass'].to_i if params['mass'] and params['mass'] =~ /^\d+$/
