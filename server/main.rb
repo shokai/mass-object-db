@@ -48,11 +48,11 @@ get '/api/items.json' do
   
   objs = nil
   if !mass and !name
-    items = Item.find(:all)
+    items = Item.find(:all).asc(:mass).asc(:name)
   else
     items = Item.where(:mass.gt => mass - range ,
                        :mass.lt => mass + range,
-                       :name => /#{name}/)
+                       :name => /#{name}/).asc(:mass).asc(:name)
   end
   items = items.map{|i|i.to_hash}
   res = {
