@@ -1,0 +1,20 @@
+h1 {
+    font-size : 20pt;
+}
+
+div#items ul{
+    font-size : 16pt;
+}
+
+div#items li{
+    margin-left : 15px;
+}
+
+div#items span.name{
+    font-size : 25pt;
+    margin : 5px;
+}
+
+div#items span.mass{
+    margin : 5px;
+}
