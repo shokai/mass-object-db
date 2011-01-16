@@ -18,3 +18,8 @@ div#items span.name{
 div#items span.mass{
     margin : 5px;
 }
+
+div#items span.edit{
+    margin : 5px;
+    font-size : smaller;
+}
