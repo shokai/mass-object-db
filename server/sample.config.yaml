@@ -1,0 +1,11 @@
+# mongo db config
+mongo_server : '127.0.0.1'
+mongo_port : 27017
+mongo_dbname : 'mass-id'
+
+# mass
+mass_range : 5
+
+# gyazz / gyaazz
+gyazz_url : 'http://gyazz.com/shokai/'
+
