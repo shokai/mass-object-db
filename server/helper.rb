@@ -6,7 +6,7 @@ require 'bson'
 require 'mongoid'
 gem 'mongoid','2.0.0.beta.20'
 require 'json'
-require File.dirname(__FILE__)+'/item'
+require File.dirname(__FILE__)+'/models/item'
 require 'yaml'
 
 begin

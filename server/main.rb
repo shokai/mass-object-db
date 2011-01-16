@@ -5,6 +5,7 @@ before do
   Mongoid.configure{|conf|
     conf.master = Mongo::Connection.new(@@conf['mongo_server'], @@conf['mongo_port']).db(@@conf['mongo_dbname'])
   }
+  @title = 'Mass ID'
 end
 
 def app_root
@@ -12,15 +13,14 @@ def app_root
 end
 
 get '/' do
-  @title = 'Mass ID'
-  erb :index
+  haml :index
 end
 
 get '/g/*' do
   param = params[:splat].first
   status 404 unless param =~ /^\d+$/
   @g = param.to_i
-  erb :g
+  haml :g
 end
 
 post '/api/item.json' do
@@ -36,7 +36,7 @@ post '/api/item.json' do
                :mass => mass
                )
   o.save
-  @mes = o.to_json
+  @mes = o.to_hash.to_json
 end
 
 get '/api/items.json' do
@@ -48,15 +48,16 @@ get '/api/items.json' do
   
   objs = nil
   if !mass and !name
-    objs = Item.find(:all)
+    items = Item.find(:all)
   else
-    objs = Item.where(:mass.gt => mass - range ,
-                      :mass.lt => mass + range,
-                      :name => /#{name}/)
+    items = Item.where(:mass.gt => mass - range ,
+                       :mass.lt => mass + range,
+                       :name => /#{name}/)
   end
+  items = items.map{|i|i.to_hash}
   res = {
-    :count => objs.size,
-    :objects => objs
+    :count => items.size,
+    :items => items
   }
   res['mass'] = mass if mass
   res['name'] = name if name
