@@ -8,6 +8,7 @@
     :javascript
       var api = "#{app_root}/api/items.json";
       var g = #{@g};
+      var gyazz_url = "#{@@conf['gyazz_url']}";
     %script{:type => 'text/javascript', :src => "#{app_root}/jquery.js"}
     %script{:type => 'text/javascript', :src => "#{app_root}/g.js"}      
   %body

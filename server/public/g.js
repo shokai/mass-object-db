@@ -12,8 +12,11 @@ function display(){
     for(var i = 0; i < data.count; i++){
         item = data.items[i];
         li = $('<li />').attr('id', item.id);
-        span_name = $('<span />').addClass('name').append(item.name);
+        a_name = $('<a />').attr('href',gyazz_url+item.name).append(item.name);
+        console.log(a_name);
+        span_name = $('<span />').addClass('name').append(a_name);
         span_mass = $('<span />').addClass('mass').append(item.mass+' (g)');
+        span_name.css('font-size',50-Math.abs(g-item.mass)*5);
         li.append(span_name);
         li.append(span_mass);
         ul.append(li);
