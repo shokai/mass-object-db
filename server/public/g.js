@@ -37,12 +37,11 @@ function Items(){
                          'mass' : g};
         $.post(uri, post_data, function(res){
             if(res.error == null) items.load(display);
-            else alert(res.error);
         }, 'json');
     };
     
     this.load = function(on_load){
-        var uri = app_root+'/api/items.json';
+        var uri = app_root+'/api/items.json'
             + '?mass='+g+'&range='+mass_range;
         $.getJSON(uri, function(res){
             if(res.error == null){
