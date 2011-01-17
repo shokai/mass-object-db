@@ -79,7 +79,7 @@ put '/api/item/*.json' do
     @mes = {:error => 'id required'}.to_json
   else
     item = Item.find(id) rescue item = nil
-    if item == nil
+    unless item
       status 404
       @mes = {:error => 'item not found'}.to_json
     else
@@ -88,6 +88,24 @@ put '/api/item/*.json' do
       item.save
       status 200
       @mes = item.to_hash.to_json
+    end
+  end
+end
+
+delete '/api/item/*.json' do
+  content_type 'application/json'
+  id = params[:splat].first.to_s.toutf8
+  if id.size < 1
+    status 403
+    @mes = {:error => 'id required'}.to_json
+  else
+    item = Item.find(id) rescue item = nil
+    unless item
+      status 404
+      @mes = {:error => 'item not found'}.to_json
+    else
+      item.delete
+      @mes = {:message => 'deleted'}.to_json
     end
   end
 end
