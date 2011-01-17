@@ -25,9 +25,9 @@ end
 
 post '/api/item.json' do
   content_type 'application/json'
-  name = params['name']
+  name = params['name'].to_s
   mass = params['mass'].to_i
-  if !name or !mass
+  if !name or name.size < 1 or !mass or mass < 1
     status 500
     @mes = {:error => 'name and mass required'}.to_json
   end
