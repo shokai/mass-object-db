@@ -10,9 +10,11 @@ function display(){
     $('div#item span#url').html($('<a />').append(url).attr('href',url));
 
     sp_name.live('dblclick', function(){
-        edit_item_param(sp_name, 'name', item.name)
+        edit_item_param(sp_name, 'name', item.name);
     });
-
+    sp_mass.live('dblclick', function(){
+        edit_item_param(sp_mass, 'mass', item.mass);
+    });
 }
 
 function edit_item_param(dom, name, default_val){
@@ -26,10 +28,11 @@ function edit_item_param(dom, name, default_val){
 }
 
 function put_item(name, value, on_put){
+    eval('post_data = { '+name+' : "'+value+'" };');
     $.ajax({
         type : 'PUT',
         url : app_root+'/api/item/'+item.id+'.json',
-        data : { name : value },
+        data : post_data,
         dataType : 'json',
         success : on_put
     });
