@@ -7,5 +7,5 @@ mongo_dbname : 'mass-id'
 mass_range : 5
 
 # gyazz / gyaazz
-gyazz_url : 'http://gyazz.com/shokai/'
+gyazz_url : 'http://gyazz.com/shokai'
 
