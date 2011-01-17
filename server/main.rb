@@ -24,7 +24,7 @@ get '/g/*' do
 end
 
 get '/item/*' do
-  @id = params[:splat].first.to_s
+  @id = params[:splat].first.to_s.toutf8
   @item = Item.find(@id) rescue @item = nil
   if @item
     haml :item
@@ -36,7 +36,7 @@ end
 
 get '/api/item/*.json' do
   content_type 'application/json'
-  id = params[:splat].first.to_s
+  id = params[:splat].first.to_s.toutf8
   item = Item.find(id) rescue item = nil
   if item
     status 200
@@ -49,7 +49,7 @@ end
 
 post '/api/item.json' do
   content_type 'application/json'
-  name = params['name'].to_s.chop.strip
+  name = params['name'].to_s.toutf8.gsub(/[　\t]/u,' ').strip
   mass = params['mass'].to_i
   if !name or name.size < 1 or !mass or mass < 1
     status 403
@@ -69,10 +69,10 @@ post '/api/item.json' do
   end
 end
 
-put '/api/item.json' do
+put '/api/item/*.json' do
   content_type 'application/json'
-  id = params['id'].to_s
-  name = params['name'].to_s.chop.strip
+  id = params[:splat].first.to_s.toutf8
+  name = params['name'].to_s.toutf8.gsub(/[　\t]/u,' ').strip
   mass = params['mass'].to_i
   if id.size < 1
     status 403
