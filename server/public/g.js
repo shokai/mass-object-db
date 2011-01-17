@@ -4,7 +4,7 @@ var items = new Items();
 var mass_range = 5;
 
 $(function(){
-    items.load(g, display);
+    items.load(display);
     $('div#new_item input#btn_add').click(items.add);
 })
 
@@ -36,13 +36,14 @@ function Items(){
         var post_data = {'name' : $('div#new_item input#name').val(),
                          'mass' : g};
         $.post(uri, post_data, function(res){
-            console.log(res);
+            if(res.error == null) items.load(display);
+            else alert(res.error);
         }, 'json');
     };
     
-    this.load = function(mass, on_load){
+    this.load = function(on_load){
         var uri = app_root+'/api/items.json';
-            + '?mass='+mass+'&range='+mass_range;
+            + '?mass='+g+'&range='+mass_range;
         $.getJSON(uri, function(res){
             if(res.error == null){
                 data = res;
