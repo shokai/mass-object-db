@@ -1,6 +1,7 @@
 
 var data;
 var items = new Items();
+var mass_range = 5;
 
 $(function(){
     items.load(g, display);
@@ -14,7 +15,7 @@ function display(){
         li = $('<li />').attr('id', item.id);
         a_name = $('<a />').attr('href',gyazz_url+item.name).append(item.name);
         span_name = $('<span />').addClass('name').append(a_name);
-        span_name.css('font-size',50-Math.abs(g-item.mass)*5);
+        span_name.css('font-size', (70+(mass_range-Math.abs(item.mass-g))*40)+'%');
         span_mass = $('<span />').addClass('mass').append(item.mass+' (g)');
         a_edit = $('<a />').attr('href',app_root+'/item/'+item.name).append('edit');
         span_edit = $('<span />').addClass('edit').append(a_edit);
@@ -29,7 +30,7 @@ function display(){
 
 function Items(){
     this.load = function(mass, on_load){
-        var uri = api+'?mass='+mass
+        var uri = api+'?mass='+mass+'&range='+mass_range;
         $.getJSON(uri, function(res){
             if(res.error == null){
                 data = res;
