@@ -23,6 +23,12 @@ get '/g/*' do
   haml :g
 end
 
+get '/item/*' do
+  @id = params[:splat].first.to_s
+  @item = Item.find(@id)
+  haml :item
+end
+
 post '/api/item.json' do
   content_type 'application/json'
   name = params['name'].to_s
