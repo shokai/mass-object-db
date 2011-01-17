@@ -6,15 +6,20 @@
     %link{:rel => 'stylesheet', :href => "#{app_root}/fonts-3.1.1.css", :type => 'text/css'}
     %link{:rel => 'stylesheet', :href => "#{app_root}/g.css", :type => 'text/css'}      
     :javascript
-      var api = "#{app_root}/api/items.json";
       var app_root = "#{app_root}";
       var g = #{@g};
-      var gyazz_url = "#{@@conf['gyazz_url']}";
+       var gyazz_url = "#{@@conf['gyazz_url']}";
     %script{:type => 'text/javascript', :src => "#{app_root}/jquery.js"}
     %script{:type => 'text/javascript', :src => "#{app_root}/g.js"}      
   %body
     %div#content
-      %div#head
-        %h1 重さ #{@g}(g)
+    %div#head
+      %h1 #{@g}(g)
       %div#items
+        %h2 だいたい#{@g}(g)ぐらいの物
+        %ul#items
+      %div#new_item
+        %h2 新規追加
+        %input#name{:size => '30', :value => 'きゃべつ'}
+        %input#btn_add{:type => 'button', :value => '追加'}
         

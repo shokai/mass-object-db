@@ -1,14 +1,26 @@
 h1 {
-    font-size : 20pt;
+    font-size : 40pt;
+}
+
+h2 {
+    font-size : 27pt;
+}
+
+div#items{
+    margin-left : 15px;
+    font-size : 16pt;
+}
+
+div#new_item{
+    margin-left : 15px;
+    font-size : 16pt;
 }
 
 div#items ul{
     font-size : 16pt;
-    margin-left : 15px;
 }
 
 div#items span.name{
-    font-size : 25pt;
     margin : 5px;
 }
 
