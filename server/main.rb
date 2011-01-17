@@ -28,15 +28,19 @@ post '/api/item.json' do
   name = params['name'].to_s
   mass = params['mass'].to_i
   if !name or name.size < 1 or !mass or mass < 1
-    status 500
+    status 403
     @mes = {:error => 'name and mass required'}.to_json
 
+  elsif Item.where(:name => name).count > 0
+    status 403
+    @mes = {:error => 'the name already exists'}.to_json
   else
     o = Item.new(
                  :name => name,
                  :mass => mass
                  )
     o.save
+    status 201
     @mes = o.to_hash.to_json
   end
 end
