@@ -25,13 +25,31 @@ end
 
 get '/item/*' do
   @id = params[:splat].first.to_s
-  @item = Item.find(@id)
-  haml :item
+  @item = Item.find(@id) rescue @item = nil
+  if @item
+    haml :item
+  else
+    status 404
+    @mes = 'item not found'
+  end
+end
+
+get '/api/item/*.json' do
+  content_type 'application/json'
+  id = params[:splat].first.to_s
+  item = Item.find(id) rescue item = nil
+  if item
+    status 200
+    @mes = item.to_hash.to_json
+  else
+    status 404
+    @mes = {:error => 'item not found'}.to_json
+  end
 end
 
 post '/api/item.json' do
   content_type 'application/json'
-  name = params['name'].to_s
+  name = params['name'].to_s.chop.strip
   mass = params['mass'].to_i
   if !name or name.size < 1 or !mass or mass < 1
     status 403
@@ -48,6 +66,29 @@ post '/api/item.json' do
     o.save
     status 201
     @mes = o.to_hash.to_json
+  end
+end
+
+put '/api/item.json' do
+  content_type 'application/json'
+  id = params['id'].to_s
+  name = params['name'].to_s.chop.strip
+  mass = params['mass'].to_i
+  if id.size < 1
+    status 403
+    @mes = {:error => 'id required'}.to_json
+  else
+    item = Item.find(id) rescue item = nil
+    if item == nil
+      status 404
+      @mes = {:error => 'item not found'}.to_json
+    else
+      item.name = name if name.size > 0
+      item.mass = mass if mass > 0
+      item.save
+      status 200
+      @mes = item.to_hash.to_json
+    end
   end
 end
 
