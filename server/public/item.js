@@ -1,6 +1,14 @@
 
 $(function(){
     display();
+    $('input#delete').click(function(){
+        $.ajax({
+            type : 'DELETE',
+            url : app_root+'/api/item/'+item.id+'.json',
+            dataType : 'json',
+            success : function(){location.href = app_root}
+        });
+    });
 })
 
 function display(){
