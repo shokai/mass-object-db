@@ -30,13 +30,15 @@ post '/api/item.json' do
   if !name or name.size < 1 or !mass or mass < 1
     status 500
     @mes = {:error => 'name and mass required'}.to_json
+
+  else
+    o = Item.new(
+                 :name => name,
+                 :mass => mass
+                 )
+    o.save
+    @mes = o.to_hash.to_json
   end
-  o = Item.new(
-               :name => name,
-               :mass => mass
-               )
-  o.save
-  @mes = o.to_hash.to_json
 end
 
 get '/api/items.json' do
