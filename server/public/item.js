@@ -13,12 +13,12 @@ $(function(){
 
 function display(){
     var sp_name = $('div#item div#name span.entity').html(item.name);
-    var sp_mass = $('div#item div#mass span.entity').html(item.mass);
+    var sp_mass = $('div#item div#mass span.entity').html($('<a />').attr('href',app_root+'/g/'+item.mass).append(item.mass+'(g)'));
     var sp_img = $('div#item div#img span.img');
     if(item.img_url) sp_img.html($('<img />').attr('src',item.img_url));
     else sp_img.html('(no img)');
     
-    var sp_img_url = $('div#item div#img span.entity').html(item.img_url);
+    var sp_img_url = $('div#item div#img span.entity').html($('<a />').attr('href', item.img_url).append(item.img_url));
     var url = gyazz_url+'/'+item.name;
     $('div#item div#url span.entity').html($('<a />').append(url).attr('href',url));
 
