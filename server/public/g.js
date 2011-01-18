@@ -18,7 +18,7 @@ function display(){
         var a_name = $('<a />').attr('href',gyazz_url+'/'+item.name).append(item.name);
         var span_name = $('<span />').addClass('name').append(a_name);
         span_name.css('font-size', (70+(mass_range-Math.abs(item.mass-g))*40)+'%');
-        var span_mass = $('<span />').addClass('mass').append(item.mass+' (g)');
+        var span_mass = $('<span />').addClass('mass').append(item.mass+'(g)');
         var a_edit = $('<a />').attr('href',app_root+'/item/'+item.id).append('edit');
         var span_edit = $('<span />').addClass('edit').append(a_edit);
         var img = $('<img />').attr('src',item.img_url);
