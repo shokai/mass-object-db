@@ -4,12 +4,17 @@
     %title= @title
     %link{:rel => 'stylesheet', :href => "#{app_root}/reset-3.1.1.css", :type => 'text/css'}
     %link{:rel => 'stylesheet', :href => "#{app_root}/fonts-3.1.1.css", :type => 'text/css'}
+    %link{:rel => 'stylesheet', :href => "#{app_root}/index.css", :type => 'text/css'}
     :javascript
-      var api = "#{app_root}/api/items.json";
+      var app_root = "#{app_root}";
+      var gyazz_url = "#{@@conf['gyazz_url']}";
     %script{:type => 'text/javascript', :src => "#{app_root}/jquery.js"}
+    %script{:type => 'text/javascript', :src => "#{app_root}/index.js"}
   %body
     %div#content
       %div#head
         %h1= @title
       %div#items
+        %h2
+        %ul#items
         

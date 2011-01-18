@@ -1,0 +1,42 @@
+
+h1 {
+    font-size : 40pt;
+}
+
+h2 {
+    font-size : 27pt;
+}
+
+div#items{
+    margin-left : 15px;
+    font-size : 16pt;
+}
+
+
+div#items ul{
+    font-size : 16pt;
+}
+
+div#items li{
+}
+
+div#items span.name{
+    margin : 5px;
+    font-size : 25pt;
+}
+
+div#items span.mass{
+    margin : 5px;
+}
+
+div#items span.edit{
+    margin : 5px;
+    font-size : 10pt;
+    background-color : #DDD;
+}
+
+div#items img{
+    width : 80px;
+    height : 80px;
+    margin-right : 5px;
+}
