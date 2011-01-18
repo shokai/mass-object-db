@@ -17,9 +17,8 @@ get '/' do
 end
 
 get '/g/*' do
-  param = params[:splat].first
-  status 404 unless param =~ /^\d+$/
-  @g = param.to_i
+  @g = params[:splat].first.to_i
+  status 404 unless @g =~ /^\d+$/
   haml :g
 end
 
