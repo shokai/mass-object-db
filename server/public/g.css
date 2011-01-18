@@ -34,7 +34,8 @@ div#items span.mass{
 
 div#items span.edit{
     margin : 5px;
-    font-size : smaller;
+    font-size : 10pt;
+    background-color : #DDD;
 }
 
 div#items img{
