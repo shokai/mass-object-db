@@ -51,6 +51,8 @@ post '/api/item.json' do
   content_type 'application/json'
   name = params['name'].to_s.toutf8.gsub(/[　\t]/u,' ').strip
   mass = params['mass'].to_i
+  img_url = params['img_url'].to_s.toutf8.strip
+  img_url = nil unless img_url =~ /^(https?\:[\w\.\~\-\/\?\&\+\=\:\@\%\;\#\%]+)(.jpe?g|.gif|.png)$/
   if !name or name.size < 1 or !mass or mass < 1
     status 403
     @mes = {:error => 'name and mass required'}.to_json
@@ -59,13 +61,14 @@ post '/api/item.json' do
     status 403
     @mes = {:error => 'the name already exists'}.to_json
   else
-    o = Item.new(
+    item = Item.new(
                  :name => name,
                  :mass => mass
                  )
-    o.save
+    item.img_url = img_url
+    item.save
     status 201
-    @mes = o.to_hash.to_json
+    @mes = item.to_hash.to_json
   end
 end
 
@@ -74,6 +77,9 @@ put '/api/item/*.json' do
   id = params[:splat].first.to_s.toutf8
   name = params['name'].to_s.toutf8.gsub(/[　\t]/u,' ').strip
   mass = params['mass'].to_i
+  img_url = params['img_url'].to_s.toutf8.strip
+  img_url = nil unless img_url =~ /^(https?\:[\w\.\~\-\/\?\&\+\=\:\@\%\;\#\%]+)(.jpe?g|.gif|.png)$/
+  p img_url
   if id.size < 1
     status 403
     @mes = {:error => 'id required'}.to_json
@@ -85,6 +91,8 @@ put '/api/item/*.json' do
     else
       item.name = name if name.size > 0
       item.mass = mass if mass > 0
+      item.img_url = img_url if img_url
+      p item
       item.save
       status 200
       @mes = item.to_hash.to_json

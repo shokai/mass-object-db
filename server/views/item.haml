@@ -16,15 +16,21 @@
       %div#head
         %h1 #{@title}
       %div#item
-        %div
+        %div#name
           %span name :
-          %span#name
-        %div
+          %span.entity
+          %span.edit
+        %div#mass
           %span mass :
-          %span#mass
-        %div
+          %span.entity
+          %span.edit
+        %div#url
           %span URL :
-          %span#url
+          %span.entity
+        %div#img
+          %span.img
+          %span.entity
+          %span.edit
       %div#control
         %input{:type => 'button', :id => 'delete', :value => '削除'}
         

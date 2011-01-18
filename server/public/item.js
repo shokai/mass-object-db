@@ -12,16 +12,27 @@ $(function(){
 })
 
 function display(){
-    var sp_name = $('div#item span#name').html(item.name);
-    var sp_mass = $('div#item span#mass').html(item.mass);
+    var sp_name = $('div#item div#name span.entity').html(item.name);
+    var sp_mass = $('div#item div#mass span.entity').html(item.mass);
+    $('div#item div#img span.img').html($('<img />').attr('src',item.img_url));
+    var sp_img_url = $('div#item div#img span.entity').html(item.img_url);
     var url = gyazz_url+'/'+item.name;
-    $('div#item span#url').html($('<a />').append(url).attr('href',url));
+    $('div#item div#url span.entity').html($('<a />').append(url).attr('href',url));
 
-    sp_name.live('dblclick', function(){
+    var sp_name_edit = $('div#item div#name span.edit').html('[edit]');
+    sp_name_edit.live('click', function(){
+        sp_name_edit.html('').die('click');
         edit_item_param(sp_name, 'name', item.name);
     });
-    sp_mass.live('dblclick', function(){
+    var sp_mass_edit = $('div#item div#mass span.edit').html('[edit]');
+    sp_mass_edit.live('click', function(){
+        sp_mass_edit.html('').die('click');
         edit_item_param(sp_mass, 'mass', item.mass);
+    });
+    var sp_img_edit = $('div#item div#img span.edit').html('[edit]');
+    sp_img_edit.live('click', function(){
+        sp_img_edit.html('').die('click');
+        edit_item_param(sp_img_url, 'img_url', item.img_url);
     });
 }
 
