@@ -1,3 +1,4 @@
+
 h1 {
     font-size : 40pt;
 }
@@ -20,6 +21,9 @@ div#items ul{
     font-size : 16pt;
 }
 
+div#items li{
+}
+
 div#items span.name{
     margin : 5px;
 }
@@ -31,4 +35,14 @@ div#items span.mass{
 div#items span.edit{
     margin : 5px;
     font-size : smaller;
+}
+
+div#items div.img{
+    width : 80px;
+    height : 80px;
+}
+
+div#items div.img img{
+    width : 100%;
+    height : 100%;
 }

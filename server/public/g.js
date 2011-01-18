@@ -21,7 +21,11 @@ function display(){
         var span_mass = $('<span />').addClass('mass').append(item.mass+' (g)');
         var a_edit = $('<a />').attr('href',app_root+'/item/'+item.id).append('edit');
         var span_edit = $('<span />').addClass('edit').append(a_edit);
+        var img = $('<img />').attr('src',item.img_url);
+        var div_img = $('<div />').addClass('img').append(img);
 
+
+        li.append(div_img);
         li.append(span_name);
         li.append(span_mass);
         li.append(span_edit);
