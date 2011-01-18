@@ -37,12 +37,7 @@ div#items span.edit{
     font-size : smaller;
 }
 
-div#items div.img{
+div#items img{
     width : 80px;
     height : 80px;
-}
-
-div#items div.img img{
-    width : 100%;
-    height : 100%;
 }
