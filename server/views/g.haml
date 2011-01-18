@@ -2,15 +2,15 @@
 %html
   %head
     %title= "#{@title} #{@g}(g)"
-    %link{:rel => 'stylesheet', :href => "#{app_root}/reset-3.1.1.css", :type => 'text/css'}
-    %link{:rel => 'stylesheet', :href => "#{app_root}/fonts-3.1.1.css", :type => 'text/css'}
-    %link{:rel => 'stylesheet', :href => "#{app_root}/g.css", :type => 'text/css'}      
+    %link{:rel => 'stylesheet', :href => "#{app_root}/css/reset-3.1.1.css", :type => 'text/css'}
+    %link{:rel => 'stylesheet', :href => "#{app_root}/css/fonts-3.1.1.css", :type => 'text/css'}
+    %link{:rel => 'stylesheet', :href => "#{app_root}/css/g.css", :type => 'text/css'}      
     :javascript
       var app_root = "#{app_root}";
       var g = #{@g};
       var gyazz_url = "#{@@conf['gyazz_url']}";
-    %script{:type => 'text/javascript', :src => "#{app_root}/jquery.js"}
-    %script{:type => 'text/javascript', :src => "#{app_root}/g.js"}      
+    %script{:type => 'text/javascript', :src => "#{app_root}/js/jquery.js"}
+    %script{:type => 'text/javascript', :src => "#{app_root}/js/g.js"}      
   %body
     %div#content
       %div#head

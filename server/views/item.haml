@@ -2,15 +2,15 @@
 %html
   %head
     %title= "#{@title} - #{@item.name} #{@item.mass}(g)"
-    %link{:rel => 'stylesheet', :href => "#{app_root}/reset-3.1.1.css", :type => 'text/css'}
-    %link{:rel => 'stylesheet', :href => "#{app_root}/fonts-3.1.1.css", :type => 'text/css'}
-    %link{:rel => 'stylesheet', :href => "#{app_root}/item.css", :type => 'text/css'}      
+    %link{:rel => 'stylesheet', :href => "#{app_root}/css/reset-3.1.1.css", :type => 'text/css'}
+    %link{:rel => 'stylesheet', :href => "#{app_root}/css/fonts-3.1.1.css", :type => 'text/css'}
+    %link{:rel => 'stylesheet', :href => "#{app_root}/css/item.css", :type => 'text/css'}      
     :javascript
       var app_root = "#{app_root}";
       var gyazz_url = "#{@@conf['gyazz_url']}";
       var item = #{@item.to_hash.to_json}
-    %script{:type => 'text/javascript', :src => "#{app_root}/jquery.js"}
-    %script{:type => 'text/javascript', :src => "#{app_root}/item.js"}
+    %script{:type => 'text/javascript', :src => "#{app_root}/js/jquery.js"}
+    %script{:type => 'text/javascript', :src => "#{app_root}/js/item.js"}
   %body
     %div#content
       %div#head
