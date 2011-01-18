@@ -31,7 +31,6 @@ function display(){
 
 function Items(){
     this.add = function(){
-        console.log('add');
         var uri = app_root+'/api/item.json';
         var post_data = {'name' : $('div#new_item input#name').val(),
                          'mass' : g};
@@ -41,7 +40,7 @@ function Items(){
     };
     
     this.load = function(on_load){
-        var uri = app_root+'/api/items.json'
+        var uri = app_root+'/api/items.json?';
             + '?mass='+g+'&range='+mass_range;
         $.getJSON(uri, function(res){
             if(res.error == null){
