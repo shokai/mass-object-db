@@ -40,4 +40,5 @@ div#items span.edit{
 div#items img{
     width : 80px;
     height : 80px;
+    margin-right : 5px;
 }
