@@ -41,8 +41,8 @@ function Items(){
     };
     
     this.load = function(on_load){
-        var uri = app_root+'/api/items.json?';
-            + '?mass='+g+'&range='+mass_range;
+        var uri = app_root+'/api/items.json?'
+            + 'mass='+g+'&range='+mass_range;
         $.getJSON(uri, function(res){
             if(res.error == null){
                 data = res;
