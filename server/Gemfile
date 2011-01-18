@@ -2,6 +2,7 @@ source 'http://rubygems.org'
 
 gem 'rack'
 gem 'sinatra'
+gem 'haml'
 gem 'extlib'
 gem 'sinatra-reloader'
 gem 'sinatra-sugar'
