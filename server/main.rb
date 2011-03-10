@@ -5,7 +5,7 @@ before do
   Mongoid.configure{|conf|
     conf.master = Mongo::Connection.new(@@conf['mongo_server'], @@conf['mongo_port']).db(@@conf['mongo_dbname'])
   }
-  @title = 'Mass ID'
+  @title = 'Mass Class'
 end
 
 def app_root
