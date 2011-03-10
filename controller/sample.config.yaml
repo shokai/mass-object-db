@@ -12,6 +12,3 @@ browser : 'open'
 #browser : 'google-chrome'
 #browser : 'firefox'
 
-serial_socket_gateway : 
-    host : 'localhost'
-    port : 8782
