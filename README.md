@@ -3,15 +3,30 @@ Mass-ID
 detect object by weight.
 
 
-Serial-Socket-Gateway
-=====================
+Mass-ID Server
+==============
+Mass-ID Server is webapp built with Sinara. It is object-weight database.
 
-Mass-ID Controller uses serial-socket-gateway to connect with Arduino.
+Dependencies
+------------
 
-install [serial-socket-gateway](https://github.com/shokai/serial-socket-gateway) and run it.
+* MongoDB 1.6+
+* Sinatra
 
-    % git clone git@github.com:shokai/serial-socket-gateway.git
-    % serial-socket-gateway /dev/tty.usb-devicename
+
+Setup
+-----
+edit config.yaml.
+
+    % cd server
+    % bundle install
+
+
+Run
+---
+    % ruby development.ru
+
+or, use passenger.
 
 
 Mass-ID Controller
@@ -39,14 +54,17 @@ Config
 Calibrate
 ---------
 
-start serial-socket-gateway, then
+edit config.yaml, then
 
-    % ruby main.rb calibrate
+    % cd controller
+    % bundle install
+    % ./mass-id-controller /dev/tty.usb-device calibrate
 
-edit config.yaml
+
 
 
 Run Controller
 --------------
 
-    % ruby main.rb
+    % ./mass-id-controller /dev/tty.usb-device
+
