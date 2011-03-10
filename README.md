@@ -16,10 +16,12 @@ Dependencies
 
 Setup
 -----
-edit config.yaml.
 
     % cd server
     % bundle install
+    % cp sample.config.yaml config.yaml
+
+edit config.yaml.
 
 
 Run
