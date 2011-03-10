@@ -7,11 +7,16 @@ h2 {
     font-size : 27pt;
 }
 
+
 div#items{
     margin-left : 15px;
     font-size : 16pt;
 }
 
+div#new_item{
+    margin-left : 15px;
+    font-size : 16pt;
+}
 
 div#items ul{
     font-size : 16pt;
@@ -39,4 +44,27 @@ div#items img{
     width : 80px;
     height : 80px;
     margin-right : 5px;
+}
+
+div#content{
+    margin-left : 15px;    
+}
+
+div#item{
+
+    font-size : 16pt;
+}
+
+div#item span.img img{
+    width : 80px;
+    height : 80px;
+}
+
+div#item span.edit{
+    background-color : #DDD;
+    font-size : 10pt;
+}
+
+div#control{
+    font-size : 16pt;
 }
