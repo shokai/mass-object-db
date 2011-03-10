@@ -9,7 +9,7 @@ $(function(){
 
 
 function display(){
-    $('div#items h2').html(data.count+'個のアイテムが登録されています')
+    $('div#items h2').html(data.count+' items')
     var ul = $('ul#items').html('');
     for(var i = 0; i < data.count; i++){
         var item = data.items[i];

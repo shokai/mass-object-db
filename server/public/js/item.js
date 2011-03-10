@@ -42,7 +42,7 @@ function display(){
 function edit_item_param(dom, name, default_val){
     dom.die('dblclick');
     var input = $('<input />').attr('id', name).attr('size', 30).attr('value', default_val);
-    var btn = $('<input />').attr('type', 'button').attr('value', '保存');
+    var btn = $('<input />').attr('type', 'button').attr('value', 'save');
     dom.html(input).append(btn);
     btn.click(function(e){
         put_item(name, $('input#'+name).val(), reload);

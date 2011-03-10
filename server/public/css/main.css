@@ -1,15 +1,27 @@
 
+body {
+    background-color : #CCB;
+}
+
+div#content {
+    background-color : #FFF;
+    padding : 15px 10px 80px 20px;
+    margin-left : 80px;
+    width : 900px;
+}
+
 h1 {
     font-size : 40pt;
 }
 
 h2 {
-    font-size : 27pt;
+    font-size : 23pt;
+    margin : 20px 10px 10px -10px;
 }
 
 
 div#items{
-    margin-left : 15px;
+    margin-left : 20px;
     font-size : 16pt;
 }
 
@@ -37,7 +49,7 @@ div#items span.mass{
 div#items span.edit{
     margin : 5px;
     font-size : 10pt;
-    background-color : #DDD;
+    background-color : #E9E9E9;
 }
 
 div#items img{
@@ -51,7 +63,7 @@ div#content{
 }
 
 div#item{
-
+    margin-left : 15px;
     font-size : 16pt;
 }
 
@@ -61,10 +73,12 @@ div#item span.img img{
 }
 
 div#item span.edit{
-    background-color : #DDD;
+    background-color : #E9E9E9;
     font-size : 10pt;
 }
 
 div#control{
     font-size : 16pt;
+    margin-top : 15px;
+    margin-left : 15px;
 }
