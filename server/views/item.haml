@@ -14,7 +14,8 @@
   %body
     %div#content
       %div#head
-        %h1 #{@title}
+        %h1
+          %a{:href => app_root}= @title
       %div#item
         %div#name
           %span name :
