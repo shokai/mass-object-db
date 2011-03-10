@@ -2,12 +2,19 @@
 # -*- coding: utf-8 -*-
 require 'rubygems'
 require 'bundler/setup'
-require 'socket'
+gem 'serialport','>=1.0.4'
+require 'serialport'
 require 'eventmachine'
 require 'yaml'
 require 'rainbow'
 
 $KCODE = 'u'
+if ARGV.size < 1
+  STDERR.puts 'mass-id-controller /dev/tty.usb-device'
+  STDERR.puts 'mass-id-controller /dev/tty.usb-device calibrate'
+  exit 1
+end
+serial_device = ARGV.shift
 calibrate = true if ARGV.first =~ /^c/i
 
 begin
@@ -24,14 +31,15 @@ unless calibrate
     v = conf['weights'][k]
     (zv - v)/k.to_f
   }
-  puts g1 = gs.inject{|a,b|a+b}.to_f/gs.size # 1グラムあたりのAD値の変化
+  g1 = gs.inject{|a,b|a+b}.to_f/gs.size # 1グラムあたりのAD値の変化
+  puts "#{g1}(adc) per 1(g)"
 end
 
 begin
-  s = TCPSocket.open(conf['serial_socket_gateway']['host'], conf['serial_socket_gateway']['port'].to_i)
+  sp = SerialPort.new(serial_device, 9600, 8, 1, 0)
 rescue => e
   STDERR.puts e.to_s.color(:red)
-  STDERR.puts 'cannot connect serial-socket-gateway'.color(:red)
+  STDERR.puts 'cannot connect serial-device'.color(:red)
 end
 
 weight = 0 # sensor
@@ -43,9 +51,9 @@ weight_tmps = Array.new
 EventMachine::run do
   EventMachine::defer do
     loop do
-      res = s.gets
+      res = sp.gets.gsub(/[\r\n]/,'')
       exit unless res
-      res.chop!.strip!
+      res.strip!
       next if res.to_s.size < 1
       weight_tmps << res.to_i
       if weight_tmps.size >= 100
