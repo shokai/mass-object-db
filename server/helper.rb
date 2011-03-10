@@ -19,3 +19,15 @@ rescue => e
   STDERR.puts 'config.yaml load error!'
   STDERR.puts e
 end
+
+Mongoid.configure{|conf|
+  conf.master = Mongo::Connection.new(@@conf['mongo_server'], @@conf['mongo_port']).db(@@conf['mongo_dbname'])
+}
+
+def app_root
+  "#{env['rack.url_scheme']}://#{env['HTTP_HOST']}#{env['SCRIPT_NAME']}"
+end
+
+before do
+  @title = 'Mass Class'
+end
