@@ -35,6 +35,7 @@ div#items ul{
 }
 
 div#items li{
+    height : 100px;
 }
 
 div#items span.name{
