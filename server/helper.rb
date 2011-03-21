@@ -29,5 +29,5 @@ def app_root
 end
 
 before do
-  @title = 'Mass Class'
+  @title = 'Mass Object DB'
 end
