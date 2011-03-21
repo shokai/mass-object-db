@@ -8,12 +8,15 @@
     :javascript
       var app_root = "#{app_root}";
       var gyazz_url = "#{@@conf['gyazz_url']}";
+      var items = #{@items.to_json}
     %script{:type => 'text/javascript', :src => "#{app_root}/js/jquery.js"}
     %script{:type => 'text/javascript', :src => "#{app_root}/js/index.js"}
   %body
     %div#content
       %div#head
         %h1= @title
+        %span#status
+          [connecting...]
       %div#items
         %h2
         %ul#items

@@ -1,6 +1,8 @@
 # -*- coding: utf-8 -*-
 
 get '/' do
+  items = Item.find(:all).asc(:mass).asc(:name)
+  @items = items.map{|i|i.to_hash}
   haml :index
 end
 
