@@ -82,7 +82,7 @@ EventMachine::run do
 
       puts "weight : #{g} (g)".color(:green)
       if median < 1.5 and (g < last_weight-5 or last_weight+5 < g) # センサ値平均がガタついてない時
-        if -5 < g and g < 5 # 何も無い
+        if g < 3 # 何も無い
           last_weight = 0
           puts 'detect => !empty!'.color(200,0,0)
         else
