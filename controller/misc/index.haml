@@ -1,0 +1,15 @@
+!!!XML
+%html
+  %head
+    - @title = 'websocket console test'
+    %title= @title
+    %script{:type => 'text/javascript', :src => "./jquery.js"}
+    %script{:type => 'text/javascript', :src => "./main.js"}
+  %body
+    %h1
+      #{@title}
+    %form#message
+      %input{:id => 'message', :type => 'text', :size => 80, :value => 'hello hello'}
+      %input{:id => 'post', :type => 'button', :value => 'post'}
+    %div#chat
+
