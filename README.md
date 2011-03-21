@@ -1,11 +1,12 @@
-Mass-ID
-=======
+Mass-Object-Database
+====================
 detect object by weight.
 
 
-Mass-ID Server
-==============
-Mass-ID Server is webapp built with Sinara. It is object-weight database.
+Mass-Object Server
+==================
+
+Mass-Object Server is webapp built with Sinara. It is a object-weight database.
 
 Dependencies
 ------------
@@ -31,9 +32,9 @@ Run
 or, use passenger.
 
 
-Mass-ID Controller
-==================
-Mass-ID controller reads sensor value from arduino, process it and open web browser.
+Mass-Object Controller
+======================
+Mass-Object controller reads sensor value from arduino, process it and open web browser.
 
 
 Dependencies
@@ -60,7 +61,7 @@ edit config.yaml, then
 
     % cd controller
     % bundle install
-    % ./mass-id-controller /dev/tty.usb-device calibrate
+    % ./mass-object-controller /dev/tty.usb-device calibrate
 
 
 
@@ -68,5 +69,5 @@ edit config.yaml, then
 Run Controller
 --------------
 
-    % ./mass-id-controller /dev/tty.usb-device
+    % ./mass-object-controller /dev/tty.usb-device
 
