@@ -26,7 +26,6 @@ EM::run do
         ws.send(mes)
       }
       puts "<#{sid}> connected".color(:green)
-      @channel.push("hello <#{sid}>")
 
       ws.onmessage{|mes|
         puts "receive <#{sid}> #{mes}".color(:magenta)
