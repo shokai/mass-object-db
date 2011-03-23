@@ -39,7 +39,8 @@ function display(mass, range){
     for(var i = 0; i < disp_items.length; i++){
         var item = disp_items[i];
         var li = $('<li />').attr('id', item.id);
-        var img = $('<img />').attr('src',item.img_url);
+        var img;
+        if(item.img_url) img = $('<img />').attr('src',item.img_url);
         var a_name = $('<a />').attr('href',gyazz_url+'/'+item.name).append(img).append(item.name);
         var span_name = $('<span />').addClass('name').append(a_name);
         var a_mass = $('<a />').attr('href',app_root+'/g/'+item.mass).append(item.mass+'(g)');
